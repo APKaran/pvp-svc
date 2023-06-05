@@ -6,6 +6,7 @@ import com.example.pvpsvc.repository.CustomerRepository;
 import com.example.pvpsvc.service.CustomerService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,7 +20,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerEntity> getCustomerAns(CustomerRequest query) {
-        return repository.findByQueContainingIgnoreCase(query.getQuery());
+        String[] arrayStr = query.getQuery().split("\\s+");
+        List<CustomerEntity> customerEntities = new ArrayList<CustomerEntity>();
+        for(String str : arrayStr){
+            List<CustomerEntity> end = repository.findByQueContainingIgnoreCase(str);
+            customerEntities.addAll(end);
+        }
+        return customerEntities;
     }
 
 }

@@ -21,10 +21,15 @@ public class PvpSvcApplication {
 		return args -> {
 			repo.save(new CustomerEntity("Hi", "Hello"));
 			repo.save(new CustomerEntity("Hello", "Hi"));
+//			repo.save(new CustomerEntity("Hello", "Hi"));
+//			repo.save(new CustomerEntity("Hello", "Hi"));
+//			repo.save(new CustomerEntity("Hello", "Hi"));
+//			repo.save(new CustomerEntity("Hello", "Hi"));
+//			repo.save(new CustomerEntity("Hello", "Hi"));
 			List<CustomerEntity> allStudents = repo.findAll();
-			System.out.println("All students in DB: " + allStudents);
+			System.out.println("All queries in DB: " + allStudents);
 			List<CustomerEntity> james = repo.findByQueContainingIgnoreCase("Hi");
-			System.out.println("James: " + james);
+			System.out.println("Ans: " + james);
 		};
 	}
 
